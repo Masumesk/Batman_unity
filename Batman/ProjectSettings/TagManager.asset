@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: background
+    uniqueID: 2783966981
+    locked: 0
+  - name: batman
+    uniqueID: 2181062881
+    locked: 0
