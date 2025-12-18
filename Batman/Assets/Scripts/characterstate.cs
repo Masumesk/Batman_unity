@@ -4,26 +4,18 @@ using System.Collections;
 
 public class characterstate : MonoBehaviour
 {
-    public float normalSpeed = 5f;
-    public float stealthSpeed = 2f;
-    public float alertSpeed = 7f;
+    [SerializeField]
+    private float normalSpeed = 5f;
+    [SerializeField]
+    private float stealthSpeed = 2f;
+    [SerializeField]
+    private float alertSpeed = 7f;
 
+    [SerializeField]
+    private SpriteRenderer lightobject;
+    [SerializeField]
    
-    public float normalLight = 1f;
-    public float stealthLight = 0.3f;
-    public float alertLight = 1.5f;
-
-    public SpriteRenderer lightobject;
-
-    
-    public Color alertColorRed = Color.red;
-    public Color alertColorBlue = Color.blue;
-
-   
-    public SpriteRenderer backgroundSprite;
-    public Color normalBackgroundColor = Color.white;
-    public Color stealthBackgroundColor = new Color(0.3f, 0.3f, 0.3f);
-    public Color alertBackgroundColor = new Color(0.8f, 0.2f, 0.2f);
+    private SpriteRenderer sr;
 
     private float currentSpeed;
     private Coroutine flashRoutine;
@@ -32,27 +24,29 @@ public class characterstate : MonoBehaviour
 
     void Start()
     {
+        //در شروع در استیت نرمال هستیم
         currentSpeed=normalSpeed;
     }
 
     void Update()
     {
-       
+        
         GameState current = StateManager.Instance.currentState;
-
+        //اگر استیت تغییر کنه باید تابع مربوط اجرا بشه
         if (current != lastState)
         {
             ApplyState(current);
             lastState = current;
         }
     }
+    //وقتی یکی از بتمن یا بتموبیل فعال میشه باید طبق استیت تابع را اجرا کنه
     void OnEnable()
     {
         GameState current = StateManager.Instance.currentState;
         ApplyState(current);
     }
 
-
+    //برای مشخص کردن سرعت در اسکریپت بتمن و بتموبیل
     public float GetSpeed()
     {
         return currentSpeed;
@@ -60,41 +54,37 @@ public class characterstate : MonoBehaviour
 
     void ApplyState(GameState state)
     {
-       
+
+       //وقتی از حالت هشدار وارد یک حالت جدید میشویم روتین چشمک زدن باید غیر فعال بشه
         if (flashRoutine != null)
         {
             StopCoroutine(flashRoutine);
             flashRoutine = null;
         }
-
-       
+        //اگر وارد استیت نرمال شویم رنگ محیط و سرعت و صدای در حال پخش باید به حالت نرمال برگردد
         if (state == GameState.Normal)
         {
             currentSpeed = normalSpeed;
-
-            
-
             AudioManager.Instance.PlayBackground();
-            if (backgroundSprite != null)
+            if (sr != null)
             {
-                backgroundSprite.color = normalBackgroundColor;
-                lightobject.color=normalBackgroundColor;
+                sr.color = Color.white;
+                lightobject.color=Color.white;
             }
         }
-
-       
+        //برای حالت مخفی کاری نور محیط تاریک میشود و سرعت هم کمتر است
         else if (state == GameState.Stealth)
         {
             currentSpeed = stealthSpeed;
             AudioManager.Instance.PlayBackground();
-            if (backgroundSprite != null)
+            if (sr != null)
             {
-                backgroundSprite.color = stealthBackgroundColor;
-                lightobject.color=stealthBackgroundColor;
+                sr.color =  new Color(0.3f, 0.3f, 0.3f);
+                lightobject.color= new Color(0.3f, 0.3f, 0.3f);
             }
         }
 
-       
+       //برای حالت هشدار سرعت بیشتر است صدا صدای هشدار است و نور های چشمک زن فعال است
         else if (state == GameState.Alert)
         {
             currentSpeed = alertSpeed;
@@ -103,26 +93,20 @@ public class characterstate : MonoBehaviour
         }
     }
 
+
+    //روتین چراغ چشمک زن است صحنه بازی را به صورت چشمک زن آبی و قرمز میکند و همزمان با آن یک
+    //object
+    //دیگر که برای چراغ در نظر گرفته شده است را قرمز و آبی میکند
     IEnumerator FlashLight()
     {
         while (true)
         {
-            if (backgroundSprite != null)
-                backgroundSprite.color = alertColorBlue;
-
-            if (lightobject != null)
-                lightobject.color = alertColorRed;
-            Debug.Log("Light color = " + lightobject.color);
-
+            
+            sr.color = Color.blue;
+            lightobject.color = Color.red;
             yield return new WaitForSeconds(0.2f);
-
-            if (backgroundSprite != null)
-                backgroundSprite.color = alertColorRed;
-
-            if (lightobject != null)
-                lightobject.color = alertColorBlue;
-            Debug.Log("Light color = " + lightobject.color);
-
+            sr.color = Color.red;
+            lightobject.color =  Color.blue;
             yield return new WaitForSeconds(0.2f);
         }
     }
