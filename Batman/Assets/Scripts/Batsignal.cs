@@ -10,10 +10,10 @@ public class Batsignal : MonoBehaviour
     private bool isOn = false;
 
     private float minY = 1.8f;
-    private float maxY = 5f;
+    private float maxY = 4f;
 
-    private float minX;
-    private float maxX;
+    private float minX=-7.5f;
+    private float maxX=7.5f;
 
     private Vector2 direction;
 
@@ -21,13 +21,6 @@ public class Batsignal : MonoBehaviour
     {
         if (signalSprite != null)
             signalSprite.enabled = false;
-
-       
-        float halfHeight = Camera.main.orthographicSize;
-        float halfWidth = halfHeight * Camera.main.aspect;
-
-        minX = -halfWidth;
-        maxX = halfWidth;
 
         
         direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;

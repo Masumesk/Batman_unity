@@ -1,8 +1,10 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
     - Batman
     - Batmobil
+    - Batsignal
     - CharacterManager
     - StateManager
     - characterstate
@@ -57,6 +59,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 24028}
     - Class: 114
       Script: {instanceID: 24036}
+    - Class: 114
+      Script: {instanceID: 26312}
+    - Class: 114
+      Script: {instanceID: 28428}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -868,10 +874,22 @@ ScriptsOnlyBuild:
     className: StateManager
   - hash:
       serializedVersion: 2
-      Hash: 70f9531d94f7fbc9f83b1fdd2e5aa9e1
+      Hash: ea2c1fd680012a68d6222c3be21413e2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: characterstate
+  - hash:
+      serializedVersion: 2
+      Hash: 482a69843059a810ba09e752db1d7c46
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Batsignal
+  - hash:
+      serializedVersion: 2
+      Hash: 64794f57ea4ac8490b356653d586ce85
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

@@ -18,7 +18,7 @@ public class characterstate : MonoBehaviour
     public Color alertColorBlue = Color.blue;
 
     
-    public AudioSource alertAudio;
+    // public AudioSource alertAudio;
 
    
     public SpriteRenderer backgroundSprite;
@@ -31,11 +31,14 @@ public class characterstate : MonoBehaviour
 
     private GameState lastState;
 
+    void Start()
+    {
+        currentSpeed=normalSpeed;
+    }
+
     void Update()
     {
-        if (!gameObject.activeInHierarchy)
-            return;
-
+       
         GameState current = StateManager.Instance.currentState;
 
         if (current != lastState)
@@ -66,9 +69,7 @@ public class characterstate : MonoBehaviour
 
             
 
-            if (alertAudio != null && alertAudio.isPlaying)
-                alertAudio.Stop();
-
+            AudioManager.Instance.PlayBackground();
             if (backgroundSprite != null)
                 backgroundSprite.color = normalBackgroundColor;
         }
@@ -77,12 +78,7 @@ public class characterstate : MonoBehaviour
         else if (state == GameState.Stealth)
         {
             currentSpeed = stealthSpeed;
-
-            
-
-            if (alertAudio != null && alertAudio.isPlaying)
-                alertAudio.Stop();
-
+            AudioManager.Instance.PlayBackground();
             if (backgroundSprite != null)
                 backgroundSprite.color = stealthBackgroundColor;
         }
@@ -91,9 +87,7 @@ public class characterstate : MonoBehaviour
         else if (state == GameState.Alert)
         {
             currentSpeed = alertSpeed;
-
-            if (alertAudio != null && !alertAudio.isPlaying)
-                alertAudio.Play();
+            AudioManager.Instance.PlayAlert();
             flashRoutine=StartCoroutine(FlashLight());
         }
     }
