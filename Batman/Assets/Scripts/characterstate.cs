@@ -8,7 +8,7 @@ public class characterstate : MonoBehaviour
     public float stealthSpeed = 2f;
     public float alertSpeed = 7f;
 
-    // public Light sceneLight;
+   
     public float normalLight = 1f;
     public float stealthLight = 0.3f;
     public float alertLight = 1.5f;
@@ -64,11 +64,7 @@ public class characterstate : MonoBehaviour
         {
             currentSpeed = normalSpeed;
 
-            // if (sceneLight != null)
-            // {
-            //     sceneLight.color = Color.white;
-            //     sceneLight.intensity = normalLight;
-            // }
+            
 
             if (alertAudio != null && alertAudio.isPlaying)
                 alertAudio.Stop();
@@ -82,11 +78,7 @@ public class characterstate : MonoBehaviour
         {
             currentSpeed = stealthSpeed;
 
-            // if (sceneLight != null)
-            // {
-            //     sceneLight.color = Color.white;
-            //     sceneLight.intensity = stealthLight;
-            // }
+            
 
             if (alertAudio != null && alertAudio.isPlaying)
                 alertAudio.Stop();
