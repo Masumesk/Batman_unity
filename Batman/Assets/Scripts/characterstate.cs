@@ -47,6 +47,12 @@ public class characterstate : MonoBehaviour
             lastState = current;
         }
     }
+    void OnEnable()
+    {
+        GameState current = StateManager.Instance.currentState;
+        ApplyState(current);
+    }
+
 
     public float GetSpeed()
     {
