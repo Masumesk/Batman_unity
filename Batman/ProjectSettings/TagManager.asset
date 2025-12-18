@@ -47,3 +47,12 @@ TagManager:
   - name: batman
     uniqueID: 2181062881
     locked: 0
+  - name: batmobilbat
+    uniqueID: 2926035937
+    locked: 0
+  - name: batsignal
+    uniqueID: 1725451083
+    locked: 0
+  - name: light
+    uniqueID: 4048576593
+    locked: 0

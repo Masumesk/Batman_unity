@@ -8,6 +8,7 @@ ScriptsOnlyBuild:
     - CharacterManager
     - StateManager
     - characterstate
+    - statelightcontroller
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
@@ -63,6 +64,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 26312}
     - Class: 114
       Script: {instanceID: 28428}
+    - Class: 114
+      Script: {instanceID: 33006}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -670,7 +673,7 @@ ScriptsOnlyBuild:
     className: UnityOnDragMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 5aef0a9cf06e500b327a797130d7e533
+      Hash: 60f6f6786f8e31d78b9845ad7d07770f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Batman
@@ -856,7 +859,7 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 45e2f6ac870baa4689c496c719f62549
+      Hash: 60f6f6786f8e31d78b9845ad7d07770f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Batmobil
@@ -874,13 +877,13 @@ ScriptsOnlyBuild:
     className: StateManager
   - hash:
       serializedVersion: 2
-      Hash: f4d3d7e9567d818a8178722786c8a2e7
+      Hash: 8f18b8a962493b1f99fa9017ae685b2c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: characterstate
   - hash:
       serializedVersion: 2
-      Hash: 482a69843059a810ba09e752db1d7c46
+      Hash: 25e8e7ca2bf51f9e2ff12c4dfc0c12a6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Batsignal
@@ -890,6 +893,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AudioManager
+  - hash:
+      serializedVersion: 2
+      Hash: d2a5448b1896ef51cb37d50c118bec4a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: statelightcontroller
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

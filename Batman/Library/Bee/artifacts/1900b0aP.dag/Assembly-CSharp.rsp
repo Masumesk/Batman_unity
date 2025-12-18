@@ -320,6 +320,7 @@
 "Assets/Scripts/Batsignal.cs"
 "Assets/Scripts/CharacterManager.cs"
 "Assets/Scripts/characterstate.cs"
+"Assets/Scripts/statelightcontroller.cs"
 "Assets/Scripts/StateManager.cs"
 -langversion:9.0
 
