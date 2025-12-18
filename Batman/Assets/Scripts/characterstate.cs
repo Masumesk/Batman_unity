@@ -1,13 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class characterstate : MonoBehaviour
 {
     public float normalSpeed = 5f;
     public float stealthSpeed = 2f;
     public float alertSpeed = 7f;
 
-        public Light sceneLight;
+    // public Light sceneLight;
     public float normalLight = 1f;
     public float stealthLight = 0.3f;
     public float alertLight = 1.5f;
@@ -28,13 +29,20 @@ public class characterstate : MonoBehaviour
     private float currentSpeed;
     private Coroutine flashRoutine;
 
+    private GameState lastState;
+
     void Update()
     {
-        
         if (!gameObject.activeInHierarchy)
             return;
 
-        ApplyState(StateManager.Instance.currentState);
+        GameState current = StateManager.Instance.currentState;
+
+        if (current != lastState)
+        {
+            ApplyState(current);
+            lastState = current;
+        }
     }
 
     public float GetSpeed()
@@ -56,11 +64,11 @@ public class characterstate : MonoBehaviour
         {
             currentSpeed = normalSpeed;
 
-            if (sceneLight != null)
-            {
-                sceneLight.color = Color.white;
-                sceneLight.intensity = normalLight;
-            }
+            // if (sceneLight != null)
+            // {
+            //     sceneLight.color = Color.white;
+            //     sceneLight.intensity = normalLight;
+            // }
 
             if (alertAudio != null && alertAudio.isPlaying)
                 alertAudio.Stop();
@@ -74,11 +82,11 @@ public class characterstate : MonoBehaviour
         {
             currentSpeed = stealthSpeed;
 
-            if (sceneLight != null)
-            {
-                sceneLight.color = Color.white;
-                sceneLight.intensity = stealthLight;
-            }
+            // if (sceneLight != null)
+            // {
+            //     sceneLight.color = Color.white;
+            //     sceneLight.intensity = stealthLight;
+            // }
 
             if (alertAudio != null && alertAudio.isPlaying)
                 alertAudio.Stop();
@@ -98,25 +106,19 @@ public class characterstate : MonoBehaviour
         }
     }
 
-      IEnumerator FlashLight()
-{
-    while (true)
+    IEnumerator FlashLight()
     {
-        if (sceneLight != null)
-            sceneLight.color = alertColorRed;
+        while (true)
+        {
+            if (backgroundSprite != null)
+                backgroundSprite.color = alertColorBlue;
 
-        if (backgroundSprite != null)
-            backgroundSprite.color = alertColorRed;
+            yield return new WaitForSeconds(0.2f);
 
-        yield return new WaitForSeconds(0.2f);
+            if (backgroundSprite != null)
+                backgroundSprite.color = alertColorRed;
 
-        if (sceneLight != null)
-            sceneLight.color = alertColorBlue;
-
-        if (backgroundSprite != null)
-            backgroundSprite.color = alertColorBlue;
-
-        yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.2f);
+        }
     }
-}
 }
