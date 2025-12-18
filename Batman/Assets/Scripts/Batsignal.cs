@@ -2,72 +2,71 @@ using UnityEngine;
 
 public class Batsignal : MonoBehaviour
 {
-    public SpriteRenderer signalSprite;
+    public SpriteRenderer sr;
 
-    public float moveSpeed = 2f;      
-    public float rotateSpeed = 20f;   
+    [SerializeField]
+    private float moveSpeed = 2f;  
+
+    [SerializeField]  
+    private float rotateSpeed = 20f;   
 
     private bool isOn = false;
-
-    private float minY = 1.8f;
-    private float maxY = 4f;
-
-    private float minX=-7.5f;
-    private float maxX=7.5f;
 
     private Vector2 direction;
 
     void Start()
     {
-        if (signalSprite != null)
-            signalSprite.enabled = false;
-
-        
+        if (sr != null)
+        {
+            sr.enabled = false;
+        }
+        //جهت تصادفی برای حرکت سیگنال
         direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
 
     void Update()
     {
-        
+
+        //if B is clicked batsignal is enabled
         if (Input.GetKeyDown(KeyCode.B))
         {
             isOn = !isOn;
-            if (signalSprite != null)
-                signalSprite.enabled = isOn;
+            if (sr != null)
+            {
+                sr.enabled = isOn;
+            }
         }
-
+        //اگر سیگنال فعال نشود نباید هیچ حرکتی داشته باشد
         if (!isOn)
+        {
             return;
-
+        }
         
+        //چرخش خود سیگنال
         transform.Rotate(Vector3.forward * rotateSpeed * Time.deltaTime);
-
-        
+        //جا به جایی سیگنال در صحنه
         transform.Translate(direction * moveSpeed * Time.deltaTime);
-
         Vector3 pos = transform.position;
 
-        
-        if (pos.y > maxY)
+        //سیگنال نباید از محدوده خارج شود
+        if (pos.y > 4f)
         {
-            pos.y = maxY;
+            pos.y = 4f;
             direction.y = -direction.y; 
         }
-        else if (pos.y < minY)
+        else if (pos.y < 1.8f)
         {
-            pos.y = minY;
+            pos.y = 1.8f;
             direction.y = -direction.y;
         }
-
-        
-        if (pos.x > maxX)
+        if (pos.x > 7.5f)
         {
-            pos.x = maxX;
+            pos.x = 7.5f;
             direction.x = -direction.x; 
         }
-        else if (pos.x < minX)
+        else if (pos.x < -7.5f)
         {
-            pos.x = minX;
+            pos.x = -7.5f;
             direction.x = -direction.x; 
         }
 

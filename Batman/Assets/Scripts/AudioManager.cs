@@ -4,14 +4,17 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
-    public AudioSource backgroundMusic;
-    public AudioSource alertSound;
+    [SerializeField]
+    private AudioSource backgroundMusic;
+
+    [SerializeField]
+    private AudioSource alertSound;
 
     
 
     void Awake()
     {
-       
+        //singleton 
         if (Instance == null)
             Instance = this;
         else
@@ -23,14 +26,17 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    //پخش صدای پس زمینه
     public void PlayBackground()
     {
         if (!backgroundMusic.isPlaying)
+        {
             backgroundMusic.Play();
-
+        }
         alertSound.Stop();
     }
 
+    //پخش صدای alert در استیت
     public void PlayAlert()
     {
         if (!alertSound.isPlaying)
@@ -39,9 +45,4 @@ public class AudioManager : MonoBehaviour
         backgroundMusic.Stop();
     }
 
-    public void StopAll()
-    {
-        backgroundMusic.Stop();
-        alertSound.Stop();
-    }
 }
