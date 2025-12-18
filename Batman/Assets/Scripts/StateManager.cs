@@ -20,16 +20,22 @@ public class StateManager : MonoBehaviour
 
     void Update()
     {
+        //با توجه به ورودی استیت مشخص میشود
         if (Input.GetKeyDown(KeyCode.N))
+        {
             SetState(GameState.Normal);
-
+        }
         else if (Input.GetKeyDown(KeyCode.C))
+        {
             SetState(GameState.Stealth);
-
+        }
         else if (Input.GetKeyDown(KeyCode.Space))
+        {
             SetState(GameState.Alert);
+        }
     }
 
+    //تغییر استیت به استیت جدید
     public void SetState(GameState newState)
     {
         currentState = newState;
