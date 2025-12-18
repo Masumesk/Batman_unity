@@ -2,6 +2,10 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Batman
+    - Batmobil
+    - CharacterManager
+    - StateManager
+    - characterstate
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
@@ -29,6 +33,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -40,7 +48,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6356}
     - Class: 114
-      Script: {instanceID: 22888}
+      Script: {instanceID: 6714}
+    - Class: 114
+      Script: {instanceID: 23056}
+    - Class: 114
+      Script: {instanceID: 23246}
+    - Class: 114
+      Script: {instanceID: 24028}
+    - Class: 114
+      Script: {instanceID: 24036}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -648,6 +664,12 @@ ScriptsOnlyBuild:
     className: UnityOnDragMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 5aef0a9cf06e500b327a797130d7e533
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Batman
+  - hash:
+      serializedVersion: 2
       Hash: ea1569413d805748b7cef2dcb4622c85
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -828,10 +850,28 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: c13adf70ec9777b05527d1b32edc4c16
+      Hash: 45e2f6ac870baa4689c496c719f62549
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Batman
+    className: Batmobil
+  - hash:
+      serializedVersion: 2
+      Hash: 7394946bc91d0fe8fd480076ed0ff0ef
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CharacterManager
+  - hash:
+      serializedVersion: 2
+      Hash: f085d4c9b78d96afcdd4d7105b4c5f9b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StateManager
+  - hash:
+      serializedVersion: 2
+      Hash: 70f9531d94f7fbc9f83b1fdd2e5aa9e1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: characterstate
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

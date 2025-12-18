@@ -315,6 +315,10 @@
 -r:"Library/Bee/artifacts/1900b0aP.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aP.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Batman.cs"
+"Assets/Scripts/Batmobil.cs"
+"Assets/Scripts/CharacterManager.cs"
+"Assets/Scripts/characterstate.cs"
+"Assets/Scripts/StateManager.cs"
 -langversion:9.0
 
 /deterministic
