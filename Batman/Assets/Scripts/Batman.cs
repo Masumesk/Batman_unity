@@ -5,20 +5,12 @@ public class Batman : MonoBehaviour
     public float runMultiplier = 2f;
 
     private SpriteRenderer sr;
-    private float leftpart;
-    private float rightpart;
-
     public characterstate stateReceiver;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
 
-        float halfHeight = Camera.main.orthographicSize;
-        float halfWidth = halfHeight * Camera.main.aspect;
-
-        leftpart = -halfWidth - 1f;
-        rightpart = halfWidth + 1f;
     }
 
     void Update()
@@ -29,7 +21,9 @@ public class Batman : MonoBehaviour
         float speed = stateReceiver.GetSpeed();
 
         if (Input.GetKey(KeyCode.LeftShift))
+        {
             speed *= runMultiplier;
+        }
 
         Vector2 movement = new Vector2(moveX, moveY);
         transform.Translate(movement * speed * Time.deltaTime);
@@ -39,9 +33,13 @@ public class Batman : MonoBehaviour
         transform.position = pos;
 
         if (moveX > 0)
+        {
             sr.flipX = true;
+        }
         else if (moveX < 0)
+        {
             sr.flipX = false;
+        }
 
         Wrap();
     }
@@ -50,10 +48,14 @@ public class Batman : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (pos.x > rightpart)
-            pos.x = leftpart;
-        else if (pos.x < leftpart)
-            pos.x = rightpart;
+        if (pos.x > 10.13f)
+        {
+            pos.x = -9.7f;
+        }
+        else if (pos.x < -9.7f)
+        {
+            pos.x = 10.13f;
+        }
 
         transform.position = pos;
     }
