@@ -7,9 +7,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioSource alertSound;
 
+    
+
     void Awake()
     {
-        // Singleton
+       
         if (Instance == null)
             Instance = this;
         else

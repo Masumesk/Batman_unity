@@ -13,12 +13,11 @@ public class characterstate : MonoBehaviour
     public float stealthLight = 0.3f;
     public float alertLight = 1.5f;
 
+    public SpriteRenderer lightobject;
+
     
     public Color alertColorRed = Color.red;
     public Color alertColorBlue = Color.blue;
-
-    
-    // public AudioSource alertAudio;
 
    
     public SpriteRenderer backgroundSprite;
@@ -77,7 +76,10 @@ public class characterstate : MonoBehaviour
 
             AudioManager.Instance.PlayBackground();
             if (backgroundSprite != null)
+            {
                 backgroundSprite.color = normalBackgroundColor;
+                lightobject.color=normalBackgroundColor;
+            }
         }
 
        
@@ -86,7 +88,10 @@ public class characterstate : MonoBehaviour
             currentSpeed = stealthSpeed;
             AudioManager.Instance.PlayBackground();
             if (backgroundSprite != null)
+            {
                 backgroundSprite.color = stealthBackgroundColor;
+                lightobject.color=stealthBackgroundColor;
+            }
         }
 
        
@@ -105,10 +110,18 @@ public class characterstate : MonoBehaviour
             if (backgroundSprite != null)
                 backgroundSprite.color = alertColorBlue;
 
+            if (lightobject != null)
+                lightobject.color = alertColorRed;
+            Debug.Log("Light color = " + lightobject.color);
+
             yield return new WaitForSeconds(0.2f);
 
             if (backgroundSprite != null)
                 backgroundSprite.color = alertColorRed;
+
+            if (lightobject != null)
+                lightobject.color = alertColorBlue;
+            Debug.Log("Light color = " + lightobject.color);
 
             yield return new WaitForSeconds(0.2f);
         }

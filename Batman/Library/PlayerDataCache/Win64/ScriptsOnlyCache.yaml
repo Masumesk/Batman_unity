@@ -874,7 +874,7 @@ ScriptsOnlyBuild:
     className: StateManager
   - hash:
       serializedVersion: 2
-      Hash: ea2c1fd680012a68d6222c3be21413e2
+      Hash: f4d3d7e9567d818a8178722786c8a2e7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: characterstate
