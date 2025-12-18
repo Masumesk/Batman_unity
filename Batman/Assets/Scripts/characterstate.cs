@@ -11,14 +11,7 @@ public class characterstate : MonoBehaviour
     [SerializeField]
     private float alertSpeed = 7f;
 
-    [SerializeField]
-    private SpriteRenderer lightobject;
-    [SerializeField]
-   
-    private SpriteRenderer sr;
-
     private float currentSpeed;
-    private Coroutine flashRoutine;
 
     private GameState lastState;
 
@@ -55,59 +48,24 @@ public class characterstate : MonoBehaviour
     void ApplyState(GameState state)
     {
 
-       //وقتی از حالت هشدار وارد یک حالت جدید میشویم روتین چشمک زدن باید غیر فعال بشه
-        if (flashRoutine != null)
-        {
-            StopCoroutine(flashRoutine);
-            flashRoutine = null;
-        }
         //اگر وارد استیت نرمال شویم رنگ محیط و سرعت و صدای در حال پخش باید به حالت نرمال برگردد
         if (state == GameState.Normal)
         {
             currentSpeed = normalSpeed;
             AudioManager.Instance.PlayBackground();
-            if (sr != null)
-            {
-                sr.color = Color.white;
-                lightobject.color=Color.white;
-            }
         }
-        //برای حالت مخفی کاری نور محیط تاریک میشود و سرعت هم کمتر است
+        //برای حالت مخفی کاری  سرعت  کمتر است
         else if (state == GameState.Stealth)
         {
             currentSpeed = stealthSpeed;
             AudioManager.Instance.PlayBackground();
-            if (sr != null)
-            {
-                sr.color =  new Color(0.3f, 0.3f, 0.3f);
-                lightobject.color= new Color(0.3f, 0.3f, 0.3f);
-            }
         }
 
-       //برای حالت هشدار سرعت بیشتر است صدا صدای هشدار است و نور های چشمک زن فعال است
+       //برای حالت هشدار سرعت بیشتر است صدا صدای هشدار است 
         else if (state == GameState.Alert)
         {
             currentSpeed = alertSpeed;
             AudioManager.Instance.PlayAlert();
-            flashRoutine=StartCoroutine(FlashLight());
-        }
-    }
-
-
-    //روتین چراغ چشمک زن است صحنه بازی را به صورت چشمک زن آبی و قرمز میکند و همزمان با آن یک
-    //object
-    //دیگر که برای چراغ در نظر گرفته شده است را قرمز و آبی میکند
-    IEnumerator FlashLight()
-    {
-        while (true)
-        {
-            
-            sr.color = Color.blue;
-            lightobject.color = Color.red;
-            yield return new WaitForSeconds(0.2f);
-            sr.color = Color.red;
-            lightobject.color =  Color.blue;
-            yield return new WaitForSeconds(0.2f);
         }
     }
 }
