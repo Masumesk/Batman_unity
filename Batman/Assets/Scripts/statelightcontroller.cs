@@ -45,13 +45,13 @@ public class statelightcontroller : MonoBehaviour
         if (state == GameState.Normal)
         {
            background.color =Color.white;
-           lightObject=Color.white;
+           lightObject.color=Color.white;
         }
         //محیط تاریک در حالت مخفی کاری
         else if (state == GameState.Stealth)
         {
             background.color =new Color(0.3f, 0.3f, 0.3f);
-            lightObject=new Color(0.3f, 0.3f, 0.3f);
+            lightObject.color=new Color(0.3f, 0.3f, 0.3f);
         }
         //نور چشمک زن در حالت هشدار
         else if (state == GameState.Alert)
@@ -69,11 +69,11 @@ public class statelightcontroller : MonoBehaviour
         while (true)
         {
             background.color =Color.blue;
-            lightObject=Color.red;
+            lightObject.color=Color.red;
             yield return new WaitForSeconds(0.2f);
 
             background.color =Color.red;
-            lightObject=Color.blue;
+            lightObject.color=Color.blue;
             yield return new WaitForSeconds(0.2f);
         }
     }
